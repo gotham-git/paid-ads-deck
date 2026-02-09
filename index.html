@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paid Ads — All Hands</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fafafa;
+  --white: #ffffff;
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #86868b;
+  --border: #e5e5e7;
+  --border-light: #f0f0f2;
+  --blue: #0071e3;
+  --blue-light: #e8f2fe;
+  --green: #28a745;
+  --green-light: #e6f9ed;
+  --yellow: #f5a623;
+  --yellow-light: #fef7e6;
+  --purple: #6e5ce6;
+  --purple-light: #f0edfe;
+  --red: #ff3b30;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.04), 0 1px 2px rgba(0,0,0,.06);
+  --shadow: 0 4px 12px rgba(0,0,0,.05), 0 1px 4px rgba(0,0,0,.04);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: -apple-system, 'Inter', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── SLIDE SYSTEM ─── */
+.slide {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 80px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.slide-number {
+  position: absolute;
+  top: 32px;
+  right: 40px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  letter-spacing: .04em;
+}
+
+.slide-overline {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 16px;
+}
+
+.slide h1 {
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -.035em;
+  line-height: 1.05;
+  margin-bottom: 20px;
+  max-width: 900px;
+}
+
+.slide h2 {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.slide .subtitle {
+  font-size: 20px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 700px;
+  margin-bottom: 48px;
+}
+
+/* ─── METRICS ROW ─── */
+.metrics-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.metric {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 24px 28px;
+  min-width: 180px;
+  flex: 1;
+  box-shadow: var(--shadow-sm);
+}
+
+.metric .label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-tertiary);
+  margin-bottom: 6px;
+}
+
+.metric .value {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+}
+
+.metric .sub {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+}
+
+.metric .value.green { color: var(--green); }
+.metric .value.blue { color: var(--blue); }
+.metric .value.purple { color: var(--purple); }
+
+/* ─── COMPARISON TABLE ─── */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.compare-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.compare-card.highlight {
+  border-color: var(--blue);
+  border-width: 2px;
+  box-shadow: var(--shadow), 0 0 0 1px rgba(0,113,227,.1);
+}
+
+.compare-card .tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.compare-card .tag.test { background: var(--yellow-light); color: var(--yellow); }
+.compare-card .tag.scale { background: var(--blue-light); color: var(--blue); }
+
+.compare-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 14px;
+}
+
+.stat-row:last-child { border-bottom: none; }
+.stat-row .lbl { color: var(--text-secondary); }
+.stat-row .val { font-weight: 600; font-variant-numeric: tabular-nums; }
+.stat-row .val.green { color: var(--green); }
+.stat-row .val.blue { color: var(--blue); }
+.stat-row .val.yellow { color: var(--yellow); }
+
+/* ─── CHANGE INDICATOR ─── */
+.change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 100px;
+}
+
+.change.up { background: var(--green-light); color: var(--green); }
+.change.down { background: #fee8e7; color: var(--red); }
+
+/* ─── AD GRID ─── */
+.ad-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.ad-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  background: var(--white);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.ad-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.ad-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ad-card .ad-label {
+  padding: 12px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-align: center;
+  border-top: 1px solid var(--border-light);
+}
+
+/* ─── ROADMAP / GOALS ─── */
+.goal-big {
+  text-align: center;
+  padding: 48px 0 40px;
+}
+
+.goal-big .number {
+  font-size: 96px;
+  font-weight: 800;
+  letter-spacing: -.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.goal-big .goal-label {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+.timeline {
+  display: flex;
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.timeline-item {
+  flex: 1;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.timeline-item.current {
+  border-color: var(--blue);
+  border-width: 2px;
+}
+
+.timeline-item .q-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-tertiary);
+  margin-bottom: 10px;
+}
+
+.timeline-item.current .q-label { color: var(--blue); }
+
+.timeline-item .q-target {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin-bottom: 14px;
+}
+
+.timeline-item .q-detail {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.brands-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.brand-pill {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.brand-pill .traffic {
+  color: var(--text-tertiary);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+/* ─── NAV ─── */
+.nav {
+  position: fixed;
+  bottom: 28px;
+  right: 32px;
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+}
+
+.nav a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 16px;
+  color: var(--text-primary);
+  box-shadow: var(--shadow);
+  transition: background .15s;
+}
+
+.nav a:hover { background: var(--border-light); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .slide { padding: 40px 24px; }
+  .slide h1 { font-size: 36px; }
+  .slide h2 { font-size: 28px; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .ad-grid { grid-template-columns: repeat(3, 1fr); }
+  .timeline { flex-direction: column; }
+  .goal-big .number { font-size: 64px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <a href="#slide1">1</a>
+  <a href="#slide2">2</a>
+  <a href="#slide3">3</a>
+  <a href="#slide4">4</a>
+</div>
+
+<!-- ════════════ SLIDE 1: Q4 Testing ════════════ -->
+<div class="slide" id="slide1">
+  <span class="slide-number">01 / 04</span>
+  <p class="slide-overline">OpenBorder · Paid Ads</p>
+  <h1>We tested paid ads in Q4. It worked.</h1>
+  <p class="subtitle">Q3 was our first attempt — $11K spend, 3 leads, zero pipeline. We adjusted targeting, creative, and landing pages in Q4. The results told us to keep going.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <span class="tag test">Q3 2025 — First Test</span>
+      <h3>$0 Pipeline</h3>
+      <div class="stat-row"><span class="lbl">Spend</span><span class="val">$10,978</span></div>
+      <div class="stat-row"><span class="lbl">Leads</span><span class="val">3</span></div>
+      <div class="stat-row"><span class="lbl">Meetings</span><span class="val">3</span></div>
+      <div class="stat-row"><span class="lbl">Opportunities</span><span class="val">0</span></div>
+      <div class="stat-row"><span class="lbl">Pipeline</span><span class="val">$0</span></div>
+      <div class="stat-row"><span class="lbl">Meeting → Opp</span><span class="val yellow">0%</span></div>
+    </div>
+    <div class="compare-card highlight">
+      <span class="tag scale">Q4 2025 — Adjusted & Proved</span>
+      <h3>$76K Pipeline</h3>
+      <div class="stat-row"><span class="lbl">Spend</span><span class="val">$39,015</span></div>
+      <div class="stat-row"><span class="lbl">Leads</span><span class="val">21 <span class="change up">+600%</span></span></div>
+      <div class="stat-row"><span class="lbl">Meetings</span><span class="val">7 <span class="change up">+133%</span></span></div>
+      <div class="stat-row"><span class="lbl">Opportunities</span><span class="val green">3</span></div>
+      <div class="stat-row"><span class="lbl">Pipeline</span><span class="val green">$76,000</span></div>
+      <div class="stat-row"><span class="lbl">Meeting → Opp</span><span class="val green">42.9%</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ SLIDE 2: Q1 Scaling ════════════ -->
+<div class="slide" id="slide2">
+  <span class="slide-number">02 / 04</span>
+  <p class="slide-overline">Q1 2026 · January</p>
+  <h1>Now we're scaling.</h1>
+  <p class="subtitle">January alone nearly matched Q4's full-quarter output — at half the spend. The funnel is converting and we're seeing real brands engage.</p>
+
+  <div class="metrics-row">
+    <div class="metric">
+      <div class="label">Spend</div>
+      <div class="value">$19K</div>
+      <div class="sub">Meta $15K · Google $1.7K · 6sense $2.2K</div>
+    </div>
+    <div class="metric">
+      <div class="label">Valid Leads</div>
+      <div class="value">28</div>
+      <div class="sub">45 total · 62% valid rate</div>
+    </div>
+    <div class="metric">
+      <div class="label">Meetings</div>
+      <div class="value">16</div>
+      <div class="sub">57% lead-to-meeting</div>
+    </div>
+    <div class="metric">
+      <div class="label">Pipeline</div>
+      <div class="value green">$40K</div>
+      <div class="sub">2 opps · Kringle Candle $20K, Bern Helmets $20K</div>
+    </div>
+  </div>
+
+  <p style="font-size:14px;font-weight:600;color:var(--text-secondary);margin-bottom:14px">Notable brands from paid ads this month</p>
+  <div class="brands-row">
+    <span class="brand-pill">Love in Faith <span class="traffic">1.7M</span></span>
+    <span class="brand-pill">Samplize <span class="traffic">372K</span></span>
+    <span class="brand-pill">Ripndip <span class="traffic">289K</span></span>
+    <span class="brand-pill">ONE/SIZE Beauty <span class="traffic">280K</span></span>
+    <span class="brand-pill">Matt and Nat <span class="traffic">275K</span></span>
+    <span class="brand-pill">Bandolier <span class="traffic">135K</span></span>
+    <span class="brand-pill">Kringle Candle <span class="traffic">103K</span></span>
+  </div>
+
+  <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap">
+    <div style="background:var(--green-light);border-radius:var(--radius-sm);padding:16px 24px;flex:1;min-width:200px">
+      <div style="font-size:12px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">vs Q4 Full Quarter</div>
+      <div style="font-size:15px;font-weight:600">Jan alone: 16 meetings vs Q4's 7 total</div>
+      <div style="font-size:13px;color:var(--text-secondary);margin-top:2px">At half the spend ($19K vs $39K)</div>
+    </div>
+    <div style="background:var(--blue-light);border-radius:var(--radius-sm);padding:16px 24px;flex:1;min-width:200px">
+      <div style="font-size:12px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Best Performers</div>
+      <div style="font-size:15px;font-weight:600">Intl Returns Apparel — $106 CPR</div>
+      <div style="font-size:13px;color:var(--text-secondary);margin-top:2px">Global-E campaign: 5 results at $133 CPR</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ SLIDE 3: Ad Creatives ════════════ -->
+<div class="slide" id="slide3">
+  <span class="slide-number">03 / 04</span>
+  <p class="slide-overline">Creative</p>
+  <h2>Best Performing Ad Creatives</h2>
+  <p class="subtitle" style="margin-bottom:36px">Pain-point-specific creatives across five themes — each targeting a different cross-border friction point.</p>
+
+  <div class="ad-grid">
+    <div class="ad-card">
+      <img src="ads/ad-global-ads.png" alt="US Ad Costs">
+      <div class="ad-label">Intl Ads — Cost Savings</div>
+    </div>
+    <div class="ad-card">
+      <img src="ads/ad-canada-refunds.png" alt="Canada Refunds">
+      <div class="ad-label">Returns — Canada</div>
+    </div>
+    <div class="ad-card">
+      <img src="ads/ad-apparel-returns.png" alt="Apparel Returns">
+      <div class="ad-label">Returns — Apparel</div>
+    </div>
+    <div class="ad-card">
+      <img src="ads/ad-uk-shipping.png" alt="UK Shipping">
+      <div class="ad-label">High Shipping — UK</div>
+    </div>
+    <div class="ad-card">
+      <img src="ads/ad-global-e.png" alt="Global-e Displacement">
+      <div class="ad-label">Global-e Displacement</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:20px;flex-wrap:wrap">
+    <div style="flex:1;min-width:260px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px 24px;box-shadow:var(--shadow-sm)">
+      <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--text-tertiary);margin-bottom:8px">Ad Volume</div>
+      <div style="font-size:14px;color:var(--text-secondary)">39 ad sets ran in January — 33 lead gen, 6 website conversion. 1,032 landing page views across 6 LPs.</div>
+    </div>
+    <div style="flex:1;min-width:260px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px 24px;box-shadow:var(--shadow-sm)">
+      <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--text-tertiary);margin-bottom:8px">Top LP</div>
+      <div style="font-size:14px;color:var(--text-secondary)">Run US Ads Globally — 473 sessions. International Returns Apparel — 243 sessions. OpenBorder vs Global-e — 236 sessions.</div>
+    </div>
+    <div style="flex:1;min-width:260px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px 24px;box-shadow:var(--shadow-sm)">
+      <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--text-tertiary);margin-bottom:8px">Creative Insight</div>
+      <div style="font-size:14px;color:var(--text-secondary)">Pain-point-specific creatives outperform generic brand awareness. Returns and shipping cost angles drive the highest engagement.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ SLIDE 4: Q1 Goals + Future ════════════ -->
+<div class="slide" id="slide4">
+  <span class="slide-number">04 / 04</span>
+  <p class="slide-overline">What's Next</p>
+  <h2>The plan from here.</h2>
+
+  <div class="goal-big">
+    <div class="number">$1M</div>
+    <div class="goal-label">Q1 2026 paid ads pipeline target</div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item current">
+      <div class="q-label">Q1 2026 — Now</div>
+      <div class="q-target">$1M Pipeline</div>
+      <div class="q-detail">
+        Scale what's working from January. Increase Meta budget on top-performing creatives (Returns, Global-e, Shipping). Launch Google Ads expansion. Add retargeting layer with 6sense intent data.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="q-label">Q2 2026</div>
+      <div class="q-target">$2–3M Pipeline</div>
+      <div class="q-detail">
+        Double ad spend with proven unit economics. Expand to LinkedIn Ads for enterprise accounts. Launch industry-specific campaigns (Supplements, Apparel, Beauty). Optimize landing pages with A/B testing.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="q-label">Q3+ 2026</div>
+      <div class="q-target">$5M+ Pipeline</div>
+      <div class="q-detail">
+        Full multichannel paid engine. Lookalike audiences from closed deals. Competitor displacement campaigns at scale. Reduce CPO below $5K with funnel optimization.
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:48px;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:var(--radius);padding:28px 32px;box-shadow:var(--shadow-sm)">
+    <div style="font-size:16px;font-weight:700;margin-bottom:12px">Key optimizations ahead</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 32px;font-size:14px;color:var(--text-secondary)">
+      <div>Better pre-qualification to improve meeting → opp rate (12.5% → 25%+)</div>
+      <div>Retargeting high-intent LP visitors who didn't convert</div>
+      <div>Industry-specific landing pages for higher conversion</div>
+      <div>Scaling top creatives while testing new angles (DDU/DDP, Supplements)</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
