@@ -45,15 +45,47 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 60px 80px;
+  padding: 80px 80px 60px;
   border-bottom: 1px solid var(--border);
   position: relative;
 }
 
-.slide-number {
+.slide-header {
   position: absolute;
-  top: 32px;
-  right: 40px;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 40px;
+}
+
+.slide-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.slide-header-left img {
+  height: 22px;
+}
+
+.slide-header-left .divider {
+  width: 1px;
+  height: 18px;
+  background: var(--border);
+}
+
+.slide-header-left .meeting-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.slide-number {
   font-size: 13px;
   font-weight: 600;
   color: var(--text-tertiary);
@@ -390,7 +422,14 @@ body {
 
 <!-- ════════════ SLIDE 1: Q4 Testing ════════════ -->
 <div class="slide" id="slide1">
-  <span class="slide-number">01 / 05</span>
+  <div class="slide-header">
+    <div class="slide-header-left">
+      <img src="logo.png" alt="OpenBorder">
+      <span class="divider"></span>
+      <span class="meeting-label">All-Hands Meeting · Feb 2026</span>
+    </div>
+    <span class="slide-number">01 / 05</span>
+  </div>
   <p class="slide-overline">OpenBorder · Paid Ads</p>
   <h1>Q4: We tested a few channels.</h1>
   <p class="subtitle">We ran paid ads across LinkedIn and Meta to see what could work as a scalable pipeline channel for cross-border.</p>
@@ -427,7 +466,14 @@ body {
 
 <!-- ════════════ SLIDE 2: Q1 Scaling ════════════ -->
 <div class="slide" id="slide2">
-  <span class="slide-number">02 / 05</span>
+  <div class="slide-header">
+    <div class="slide-header-left">
+      <img src="logo.png" alt="OpenBorder">
+      <span class="divider"></span>
+      <span class="meeting-label">All-Hands Meeting · Feb 2026</span>
+    </div>
+    <span class="slide-number">02 / 05</span>
+  </div>
   <p class="slide-overline">Q1 2026 · January</p>
   <h1>Q1: Continues to show promise.</h1>
   <p class="subtitle">In January alone we had over 2x the meetings of all of Q4, at half the cost per meeting. Monitoring meeting quality and close rate very closely.</p>
@@ -473,7 +519,14 @@ body {
 
 <!-- ════════════ SLIDE 3: Angles & Testing ════════════ -->
 <div class="slide" id="slide3">
-  <span class="slide-number">03 / 05</span>
+  <div class="slide-header">
+    <div class="slide-header-left">
+      <img src="logo.png" alt="OpenBorder">
+      <span class="divider"></span>
+      <span class="meeting-label">All-Hands Meeting · Feb 2026</span>
+    </div>
+    <span class="slide-number">03 / 05</span>
+  </div>
   <p class="slide-overline">Testing at Scale</p>
   <h2>We're not running 2-3 campaigns. We're testing 15+ angles.</h2>
   <p class="subtitle" style="margin-bottom:32px">Started with 250+ ad images across every cross-border pain point we know. Refined down to 120 top-performing creatives based on results.</p>
@@ -590,7 +643,14 @@ body {
 
 <!-- ════════════ SLIDE 4: Ad Creatives ════════════ -->
 <div class="slide" id="slide4">
-  <span class="slide-number">04 / 05</span>
+  <div class="slide-header">
+    <div class="slide-header-left">
+      <img src="logo.png" alt="OpenBorder">
+      <span class="divider"></span>
+      <span class="meeting-label">All-Hands Meeting · Feb 2026</span>
+    </div>
+    <span class="slide-number">04 / 05</span>
+  </div>
   <p class="slide-overline">Creative</p>
   <h2>Best Performing Ad Creatives</h2>
   <p class="subtitle" style="margin-bottom:36px">Pain-point-specific creatives that are driving the most engagement.</p>
@@ -632,7 +692,14 @@ body {
 
 <!-- ════════════ SLIDE 5: Q1 Goals + Future ════════════ -->
 <div class="slide" id="slide5">
-  <span class="slide-number">05 / 05</span>
+  <div class="slide-header">
+    <div class="slide-header-left">
+      <img src="logo.png" alt="OpenBorder">
+      <span class="divider"></span>
+      <span class="meeting-label">All-Hands Meeting · Feb 2026</span>
+    </div>
+    <span class="slide-number">05 / 05</span>
+  </div>
   <p class="slide-overline">What's Next</p>
   <h2>The plan from here.</h2>
 
